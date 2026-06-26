@@ -1,0 +1,24 @@
+$input-text-background-color: rgba(0, 0, 0, 0.5);
+$input-text-font-color: white;
+$input-text-border-radius: .5em;
+$input-padding: .25em;
+
+.suggestion-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+input, label {
+    flex: 1 1 0;
+    padding: $input-padding;
+}
+
+input[type="text"] {
+    background-color: $input-text-background-color;
+    color: $input-text-font-color;
+    border-radius: $input-text-border-radius;
+    border: 1px solid $input-text-background-color;
+    padding: $input-padding;
+}
