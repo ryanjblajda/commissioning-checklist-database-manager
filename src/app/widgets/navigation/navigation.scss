@@ -1,0 +1,23 @@
+.nav-main {
+    display: flex;
+}
+
+button {
+    flex: 1 1 0;
+    padding: 1em;
+    font-size: large;
+    border-radius: .5em;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    margin: .2em;
+    color: white;
+    transition: all .2s ease-in-out;
+}
+
+button:hover { 
+    scale: 1.02;
+}
+
+button:active {
+    background: rgba(255, 255, 255, 0.2);
+}
