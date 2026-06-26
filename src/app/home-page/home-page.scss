@@ -1,0 +1,36 @@
+$button-width: 10em;
+$button-background-color: rgba(255, 255, 255, 0.05);
+$button-shadow-color: rgba(255, 255, 255, 0.1);
+$button-border-radius: .5em;
+$button-font-color: white;
+
+$font-color: white;
+
+.main {
+    display: flex;
+    gap: 1em;
+    flex-direction: column;
+    padding: 5em;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    color: $font-color;
+}
+
+button {
+    flex: 1 1 20%;
+    aspect-ratio: 4 / 1;
+    max-height: 5em;
+    font-size: larger;
+    border-radius: $button-border-radius;
+    color: $button-font-color;
+    border: 0px;
+    background-color: $button-background-color;
+    transition: all 0.5s ease-in-out;
+}
+
+button:hover {
+    box-shadow: 0px 0px 5px $button-shadow-color;
+    scale: 1.05;
+}
