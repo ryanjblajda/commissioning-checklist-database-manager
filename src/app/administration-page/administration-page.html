@@ -1,0 +1,112 @@
+<section class="main">
+    <app-navigation></app-navigation>
+    <section class="administration">
+        <section class="nav-admin">
+            <button (click)="setSelectedTab(tabDashboard)"><i class="bi bi-speedometer"></i></button>
+            <button (click)="setSelectedTab(tabTypes)"><i class="bi bi-cpu"></i></button>
+            <button (click)="setSelectedTab(tabModels)"><i class="bi bi-upc"></i></button>
+            <button (click)="setSelectedTab(tabManufacturers)"><i class="bi bi-buildings"></i></button>
+            <button (click)="setSelectedTab(tabCapabilities)"><i class="bi bi-stars"></i></button>
+            <button (click)="setSelectedTab(tabControlTypes)"><i class="bi bi-ethernet"></i></button>
+            <button (click)="setSelectedTab(tabTasks)"><i class="bi bi-list-check"></i></button>
+        </section>
+        <section class="administration-selected-pane">
+            @if (selectedTab() === tabDashboard) {
+                <section class="content dashboard">
+                    <section class="stats">
+                        <article class="stat-item border">
+                            <section class="detail">
+                                <span class="stat-title">Types</span>
+                                <span class="stat-count">{{types().length}}</span>
+                            </section>
+                            <section class="icon">
+                                <i class="bi bi-cpu"></i>
+                            </section>
+                        </article>
+                        <article class="stat-item border">
+                            <section class="detail">
+                                <span class="stat-title">Models</span>
+                                <span class="stat-count">{{models().length}}</span>
+                            </section>
+                            <section class="icon">
+                                <i class="bi bi-upc"></i>
+                            </section>
+                        </article>
+                        <article class="stat-item border">
+                            <section class="detail">
+                                <span class="stat-title">Manufacturers</span>
+                                <span class="stat-count">{{manufacturers().length}}</span>
+                            </section>
+                            <section class="icon">
+                                <i class="bi bi-buildings"></i>
+                            </section>
+                        </article>
+                        <article class="stat-item border">
+                            <section class="detail">
+                                <span class="stat-title">Control Types</span>
+                                <span class="stat-count">{{controls().length}}</span>
+                            </section>
+                            <section class="icon">
+                                <i class="bi bi-ethernet"></i>
+                            </section>
+                        </article>
+                        <article class="stat-item border">
+                            <section class="detail">
+                                <span class="stat-title">Capabilities</span>
+                                <span class="stat-count">{{capabilities().length}}</span>
+                            </section>
+                            <section class="icon">
+                                <i class="bi bi-stars"></i>
+                            </section>
+                        </article>
+                        <article class="stat-item border">
+                            <section class="detail">
+                                <span class="stat-title">Commissioning Tasks</span>
+                                <span class="stat-count">{{tasks().length}}</span>
+                            </section>
+                            <section class="icon">
+                                <i class="bi bi-list-check"></i>
+                            </section>
+                        </article>
+                    </section>
+                    <section class="quick-add border">
+                        <section class="title">
+                            <h1>Add New Device</h1>
+                        </section>
+                        <app-device-pane [capabilities]="capabilities()" [controls]="controls()" [submitButtonText]="btnText"></app-device-pane>
+                    </section>
+                </section>
+            }
+            @else if(selectedTab() === tabTypes) {
+                <section class="content">
+                    
+                </section>
+            }
+            @else if(selectedTab() === tabModels) {
+                <section class="content">
+
+                </section>
+            }
+            @else if(selectedTab() === tabManufacturers) {
+                <section class="content">
+
+                </section>
+            }
+            @else if(selectedTab() === tabCapabilities) {
+                <section class="content">
+
+                </section>
+            }
+            @else if(selectedTab() === tabControlTypes) {
+                <section class="content">
+
+                </section>
+            }
+            @else if(selectedTab() === tabTasks) {
+                <section class="content">
+
+                </section>
+            }
+        </section>
+    </section>
+</section>
