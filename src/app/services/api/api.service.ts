@@ -3,6 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MemberPayload } from '../../models/member/member.model';
 import { Observable } from 'rxjs';
+import { DevicePayload, DeviceTypePayload } from '../../models/device/device.model';
 
 // Define an interface for type safety
 export interface Post {
@@ -24,35 +25,35 @@ export class ApiService {
     return this.http.get<MemberPayload>(`${this.apiUrl}get/capabilities`)
   }
 
-  getControlTypes() {
+  getControlTypes(): Observable<MemberPayload> {
     return this.http.get<MemberPayload>(`${this.apiUrl}get/controltypes`)
   }
 
-  getPrefixes() {
-    return this.http.get<MemberPayload>(`${this.apiUrl}get/prefixes`)
+  getPrefixes(): Observable<DeviceTypePayload> {
+    return this.http.get<DeviceTypePayload>(`${this.apiUrl}get/prefixes`)
   }
 
-  getPrefix(prefix: string) {
-    return this.http.get<MemberPayload>(`${this.apiUrl}get/prefixes/${prefix}`)
+  getPrefix(prefix: string): Observable<DeviceTypePayload> {
+    return this.http.get<DeviceTypePayload>(`${this.apiUrl}get/prefixes/${prefix}`)
   }
 
-  getTasks() {
+  getTasks(): Observable<MemberPayload> {
     return this.http.get<MemberPayload>(`${this.apiUrl}get/tasks`)
   }
 
-  getModels() {
-    return this.http.get<MemberPayload>(`${this.apiUrl}get/models`)
+  getModels(): Observable<DevicePayload> {
+    return this.http.get<DevicePayload>(`${this.apiUrl}get/models`)
   }
 
-  getModel(model: string) {
+  getModel(model: string): Observable<MemberPayload> {
     return this.http.get<MemberPayload>(`${this.apiUrl}get/models/${model}`)
   }
 
-  getManufacturers() {
+  getManufacturers(): Observable<MemberPayload> {
     return this.http.get<MemberPayload>(`${this.apiUrl}get/manufacturers`)
   }
 
-  getManufacturer(manufacturer: string) {
+  getManufacturer(manufacturer: string): Observable<MemberPayload> {
     return this.http.get<MemberPayload>(`${this.apiUrl}get/manufacturers/${manufacturer}`)
   }
 }
