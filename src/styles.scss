@@ -1,1 +1,80 @@
-/* You can add global styles to this file, and also import other style files */
+$body-background-color: rgb(27, 0, 37);
+$body-font-color: white;
+$container-border: 1px solid rgba(255, 255, 255, 0.3);
+$container-border-radius: .5em;
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body, html {
+    background-color: $body-background-color;
+    color: $body-font-color;
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+app-navigation {
+    width: 100%;
+    padding: 1em;
+}
+
+.uppercase { 
+    text-transform: uppercase;
+}
+
+.layout {
+    display: flex;
+    gap: 1em;
+    flex-direction: column;
+    width: 100%;
+    padding: 0.25em;
+}
+
+.title { 
+    text-align: center;
+}
+
+.main { 
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.members {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 0.25em;
+}
+
+button {
+    padding: 1em;
+    font-size: large;
+    border-radius: .5em;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    margin: 1em;
+    color: white;
+    transition: all .2s ease-in-out;
+}
+
+button:hover { 
+    scale: 1.1;
+}
+
+button:active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.container {
+    display: flex;
+    gap: 1em;
+    align-items: stretch;
+    padding: 1em;
+    border: $container-border;
+    border-radius: $container-border-radius;
+}
