@@ -2,13 +2,14 @@
     <app-navigation></app-navigation>
     <section class="administration">
         <section class="nav-admin">
-            <button (click)="setSelectedTab(tabDashboard)"><i class="bi bi-speedometer"></i></button>
-            <button (click)="setSelectedTab(tabTypes)"><i class="bi bi-cpu"></i></button>
-            <button (click)="setSelectedTab(tabModels)"><i class="bi bi-upc"></i></button>
-            <button (click)="setSelectedTab(tabManufacturers)"><i class="bi bi-buildings"></i></button>
-            <button (click)="setSelectedTab(tabCapabilities)"><i class="bi bi-stars"></i></button>
-            <button (click)="setSelectedTab(tabControlTypes)"><i class="bi bi-ethernet"></i></button>
-            <button (click)="setSelectedTab(tabTasks)"><i class="bi bi-list-check"></i></button>
+            <button [class.active-tab]="selectedTab() === tabDashboard" (click)="setSelectedTab(tabDashboard)"><i class="bi bi-speedometer"></i></button>
+            <button [class.active-tab]="selectedTab() === tabSearch" (click)="setSelectedTab(tabSearch)"><i class="bi bi-search"></i></button>
+            <button [class.active-tab]="selectedTab() === tabTypes" (click)="setSelectedTab(tabTypes)"><i class="bi bi-cpu"></i></button>
+            <button [class.active-tab]="selectedTab() === tabModels" (click)="setSelectedTab(tabModels)"><i class="bi bi-upc"></i></button>
+            <button [class.active-tab]="selectedTab() === tabManufacturers" (click)="setSelectedTab(tabManufacturers)"><i class="bi bi-buildings"></i></button>
+            <button [class.active-tab]="selectedTab() === tabCapabilities" (click)="setSelectedTab(tabCapabilities)"><i class="bi bi-stars"></i></button>
+            <button [class.active-tab]="selectedTab() === tabControlTypes" (click)="setSelectedTab(tabControlTypes)"><i class="bi bi-ethernet"></i></button>
+            <button [class.active-tab]="selectedTab() === tabTasks" (click)="setSelectedTab(tabTasks)"><i class="bi bi-list-check"></i></button>
         </section>
         <section class="administration-selected-pane">
             @if (selectedTab() === tabDashboard) {
@@ -69,7 +70,7 @@
                             </section>
                         </article>
                     </section>
-                    <section class="quick-add border">
+                    <section class="quick-add border content-margin-padding">
                         <section class="title">
                             <h1>Add New Device</h1>
                         </section>
@@ -78,33 +79,65 @@
                 </section>
             }
             @else if(selectedTab() === tabTypes) {
+                <section class="content items content-margin-padding">
+                    @for (item of types(); track $index) {
+                        <button class="item border" (click)="searchItem(tabTypes, item.name)">
+                            <section class="item-name">{{item.name}}</section>
+                            <section class="item-description">{{item.description}}</section>
+                        </button>
+                    }
+                </section>
+            }
+            @else if(selectedTab() === tabSearch) {
                 <section class="content">
-                    
+
                 </section>
             }
             @else if(selectedTab() === tabModels) {
-                <section class="content">
-
+                <section class="content items content-margin-padding">
+                    @for (item of models(); track $index) {
+                        <button class="item border" (click)="searchItem(tabModels, item.name)">
+                            <section class="item-name">{{item.name}}</section>
+                            <section class="item-description">{{item.manufacturer_name}}</section>
+                            <section class="item-description">{{item.control_type_name}}</section>
+                        </button>
+                    }
                 </section>
             }
             @else if(selectedTab() === tabManufacturers) {
-                <section class="content">
-
+                <section class="content items content-margin-padding">
+                    @for (item of manufacturers(); track $index) {
+                        <button class="item border" (click)="searchItem(tabTypes, item.name)">
+                            <section class="item-name">{{item.name}}</section>
+                        </button>
+                    }
                 </section>
             }
             @else if(selectedTab() === tabCapabilities) {
-                <section class="content">
-
+                <section class="content items content-margin-padding">
+                    @for (item of capabilities(); track $index) {
+                        <button class="item border" (click)="searchItem(tabTypes, item.name)">
+                            <section class="item-name">{{item.name}}</section>
+                        </button>
+                    }
                 </section>
             }
             @else if(selectedTab() === tabControlTypes) {
-                <section class="content">
-
+                <section class="content items content-margin-padding">
+                    @for (item of controls(); track $index) {
+                        <button class="item border" (click)="searchItem(tabTypes, item.name)">
+                            <section class="item-name">{{item.name}}</section>
+                        </button>
+                    }
                 </section>
             }
             @else if(selectedTab() === tabTasks) {
-                <section class="content">
-
+                <section class="content items content-margin-padding">
+                    @for (item of tasks(); track $index) {
+                        <button class="item border" (click)="searchItem(tabTypes, item.name)">
+                            <section class="item-name">{{item.name}}</section>
+                        </button>
+                    }
                 </section>
             }
         </section>

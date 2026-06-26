@@ -3,6 +3,7 @@ import { Navigation } from '../widgets/navigation/navigation';
 import { Member } from '../models/member/member.model';
 import { ApiService } from '../services/api/api.service';
 import { DevicePane } from "../widgets/device-pane/device-pane";
+import { Device, DeviceType } from '../models/device/device.model';
 
 @Component({
   selector: 'app-administration-page',
@@ -15,9 +16,9 @@ export class AdministrationPage {
 
   capabilities = signal<Member[]>([])
   controls = signal<Member[]>([])
-  types = signal<Member[]>([])
+  types = signal<DeviceType[]>([])
   manufacturers = signal<Member[]>([])
-  models = signal<Member[]>([])
+  models = signal<Device[]>([])
   tasks = signal<Member[]>([])
 
   btnText = "Add Device";
@@ -28,6 +29,7 @@ export class AdministrationPage {
   tabCapabilities = 'capabilities';
   tabControlTypes = 'controltypes';
   tabTasks = 'tasks';
+  tabSearch = 'search'
 
   tabs = [
     this.tabDashboard, this.tabDashboard, this.tabModels, 
@@ -44,8 +46,11 @@ export class AdministrationPage {
     this.getTasks();
   } 
 
-  setSelectedTab(tab:string)
-  {
+  searchItem(searchType:string, searchString:string) {
+    this.setSelectedTab(this.tabSearch);
+  }
+
+  setSelectedTab(tab:string) {
     this.selectedTab.set(tab);
   }
 
@@ -88,6 +93,7 @@ export class AdministrationPage {
     this.apiService.getModels().subscribe(
       payload => {
         this.models.set(payload.payload);
+        console.log(payload.payload);
     });
   }
 }
