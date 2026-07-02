@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { MemberPayload } from '../../models/member/member.model';
 import { Observable } from 'rxjs';
 import { DevicePayload, DeviceTypePayload } from '../../models/device/device.model';
+import { Task, TaskPayload } from '../../models/task/task.model';
 
 // Define an interface for type safety
 export interface Post {
@@ -37,8 +38,8 @@ export class ApiService {
     return this.http.get<DeviceTypePayload>(`${this.apiUrl}get/prefixes/${prefix}`)
   }
 
-  getTasks(): Observable<MemberPayload> {
-    return this.http.get<MemberPayload>(`${this.apiUrl}get/tasks`)
+  getTasks(): Observable<TaskPayload> {
+    return this.http.get<TaskPayload>(`${this.apiUrl}get/tasks`)
   }
 
   getModels(): Observable<DevicePayload> {
