@@ -46,7 +46,69 @@ export class AdministrationPage {
     this.getTasks();
   } 
 
-  searchItem(searchType:string, searchString:string) {
+  supportsDescription(tab:string): boolean {
+    let result = false;
+    switch(tab) 
+    {
+      case this.tabCapabilities: break;
+      case this.tabControlTypes: break;
+      case this.tabManufacturers: break;
+      case this.tabModels: break;
+      case this.tabSearch: break;
+      case this.tabTasks: result = true; break;
+      case this.tabTypes: result = true; break;
+    }
+
+    return result;
+  }
+
+  getDescriptionTextTransform(tab:string): string {
+    let result = '';
+    switch(tab) 
+    {
+      case this.tabCapabilities: break;
+      case this.tabControlTypes: break;
+      case this.tabManufacturers: break;
+      case this.tabModels: break;
+      case this.tabSearch: break;
+      case this.tabTasks: break;
+      case this.tabTypes: result = 'capitalize'; break;
+    }
+    return result;
+  }
+
+  getNameTextTransform(tab:string): string {
+    let result = '';
+    switch(tab) 
+    {
+      case this.tabCapabilities: result = 'lowercase'; break;
+      case this.tabControlTypes: result = 'lowercase'; break;
+      case this.tabManufacturers: result = 'uppercase'; break;
+      case this.tabModels: result = 'uppercase'; break;
+      case this.tabSearch: break;
+      case this.tabTasks: result = 'capitalize'; break;
+      case this.tabTypes: result = 'uppercase'; break;
+    }
+    return result;
+  }
+
+  supportsAddEntry(tab:string): boolean {
+    let result = false;
+    switch(tab) 
+    {
+      case this.tabCapabilities: result = true; break;
+      case this.tabControlTypes: result = true; break;
+      case this.tabManufacturers: result = true;  break;
+      case this.tabModels: result = true; break;
+      case this.tabSearch: break;
+      case this.tabTasks: result = true; break;
+      case this.tabTypes: result = true; break;
+    }
+
+    return result;
+  }
+
+  searchItem(searchType:string, searchString:string): void {
     this.setSelectedTab(this.tabSearch);
   }
 

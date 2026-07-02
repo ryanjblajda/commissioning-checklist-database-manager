@@ -12,6 +12,23 @@
             <button [class.active-tab]="selectedTab() === tabTasks" (click)="setSelectedTab(tabTasks)"><i class="bi bi-list-check"></i></button>
         </section>
         <section class="administration-selected-pane">
+            @if (supportsAddEntry(selectedTab())) {
+                <section class="quick-add border items">
+                    <section class="input">
+                        <label for="name">Name</label>
+                        <input name="name" type="text" [ngClass]="getNameTextTransform(selectedTab())">
+                    </section>
+                    @if (supportsDescription(selectedTab())) {
+                        <section class="input">
+                            <label for="name">Description</label>
+                            <input name="name" type="text" [ngClass]="getDescriptionTextTransform(selectedTab())"/> 
+                        </section>
+                    }
+
+                    @if (selectedTab() === tabModels) { }
+                    <button>Add {{selectedTab()}}</button>
+                </section>
+            }
             @if (selectedTab() === tabDashboard) {
                 <section class="content dashboard">
                     <section class="stats">
