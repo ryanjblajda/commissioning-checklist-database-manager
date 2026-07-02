@@ -4,10 +4,12 @@ import { Member } from '../models/member/member.model';
 import { ApiService } from '../services/api/api.service';
 import { DevicePane } from "../widgets/device-pane/device-pane";
 import { Device, DeviceType } from '../models/device/device.model';
+import { Task, TaskPayload } from '../models/task/task.model';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-administration-page',
-  imports: [Navigation, DevicePane],
+  imports: [Navigation, DevicePane, NgClass],
   templateUrl: './administration-page.html',
   styleUrl: './administration-page.scss',
 })
@@ -19,17 +21,17 @@ export class AdministrationPage {
   types = signal<DeviceType[]>([])
   manufacturers = signal<Member[]>([])
   models = signal<Device[]>([])
-  tasks = signal<Member[]>([])
+  tasks = signal<Task[]>([])
 
   btnText = "Add Device";
-  tabDashboard = 'dashboard';
-  tabTypes = 'types';
-  tabModels = 'models';
-  tabManufacturers = 'manufacturers';
-  tabCapabilities = 'capabilities';
-  tabControlTypes = 'controltypes';
-  tabTasks = 'tasks';
-  tabSearch = 'search'
+  tabDashboard = 'Dashboard';
+  tabTypes = 'Type';
+  tabModels = 'Model';
+  tabManufacturers = 'Manufacturer';
+  tabCapabilities = 'Capability';
+  tabControlTypes = 'Control Type';
+  tabTasks = 'Task';
+  tabSearch = 'Search'
 
   tabs = [
     this.tabDashboard, this.tabDashboard, this.tabModels, 
