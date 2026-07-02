@@ -22,3 +22,11 @@ input[type="text"] {
     border: 1px solid $input-text-background-color;
     padding: $input-padding;
 }
+
+.submit { 
+    display: flex;
+
+    button { 
+        flex: 1 1 0;
+    }
+}
