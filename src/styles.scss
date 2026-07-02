@@ -24,6 +24,14 @@ app-navigation {
     text-transform: uppercase;
 }
 
+.lowercase { 
+    text-transform: lowercase;
+}
+
+.capitalize { 
+    text-transform: capitalize;
+}
+
 .layout {
     display: flex;
     gap: 1em;
