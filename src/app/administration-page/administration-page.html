@@ -98,7 +98,7 @@
             @else if(selectedTab() === tabTypes) {
                 <section class="content items content-margin-padding">
                     @for (item of types(); track $index) {
-                        <button class="item border" (click)="searchItem(tabTypes, item.name)">
+                        <button class="item border prefix" (click)="searchItem(tabTypes, item.name)">
                             <section class="item-name">{{item.name}}</section>
                             <section class="item-description">{{item.description}}</section>
                         </button>
@@ -106,17 +106,13 @@
                 </section>
             }
             @else if(selectedTab() === tabSearch) {
-                <section class="content">
-
-                </section>
             }
             @else if(selectedTab() === tabModels) {
                 <section class="content items content-margin-padding">
                     @for (item of models(); track $index) {
-                        <button class="item border" (click)="searchItem(tabModels, item.name)">
-                            <section class="item-name">{{item.name}}</section>
-                            <section class="item-description">{{item.manufacturer_name}}</section>
-                            <section class="item-description">{{item.control_type_name}}</section>
+                        <button class="item border device" (click)="searchItem(tabModels, item.name)">
+                            <section class="item-name"><span class="item-manufacturer">{{item.manufacturer_name}}</span>: {{item.name}}</section>
+                            <section class="item-control-type">{{item.control_type_name}}</section>
                         </button>
                     }
                 </section>
@@ -124,7 +120,7 @@
             @else if(selectedTab() === tabManufacturers) {
                 <section class="content items content-margin-padding">
                     @for (item of manufacturers(); track $index) {
-                        <button class="item border" (click)="searchItem(tabTypes, item.name)">
+                        <button class="item border manufacturer" (click)="searchItem(tabTypes, item.name)">
                             <section class="item-name">{{item.name}}</section>
                         </button>
                     }
@@ -133,7 +129,7 @@
             @else if(selectedTab() === tabCapabilities) {
                 <section class="content items content-margin-padding">
                     @for (item of capabilities(); track $index) {
-                        <button class="item border" (click)="searchItem(tabTypes, item.name)">
+                        <button class="item border capability" (click)="searchItem(tabTypes, item.name)">
                             <section class="item-name">{{item.name}}</section>
                         </button>
                     }
@@ -142,7 +138,7 @@
             @else if(selectedTab() === tabControlTypes) {
                 <section class="content items content-margin-padding">
                     @for (item of controls(); track $index) {
-                        <button class="item border" (click)="searchItem(tabTypes, item.name)">
+                        <button class="item border control-type" (click)="searchItem(tabTypes, item.name)">
                             <section class="item-name">{{item.name}}</section>
                         </button>
                     }
@@ -151,8 +147,9 @@
             @else if(selectedTab() === tabTasks) {
                 <section class="content items content-margin-padding">
                     @for (item of tasks(); track $index) {
-                        <button class="item border" (click)="searchItem(tabTypes, item.name)">
+                        <button class="item border task" (click)="searchItem(tabTypes, item.name)">
                             <section class="item-name">{{item.name}}</section>
+                            <section class="item-description">{{item.description}}</section>
                         </button>
                     }
                 </section>
