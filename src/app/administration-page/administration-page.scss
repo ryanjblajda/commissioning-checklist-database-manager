@@ -98,13 +98,25 @@
 .items { 
     display: flex;
     flex-wrap: wrap;
+    align-content: flex-start;
     gap: 0.2em;
 }
 
 .item { 
     padding: .5em;
-    flex: 1 1 15%;
     margin: 0.2em;
+}
+
+.prefix {
+    flex: 1 1 15%;
+}
+
+.device { 
+    flex: 1 1 30%;
+}
+
+.capability, .manufacturer, .control-type, .task {
+    flex: 1 1 40%;
 }
 
 .item-name {
@@ -114,4 +126,30 @@
 .item-description {
     font-size: small;
     color: darkgrey;
+}
+
+.item-control-type {
+    font-size: x-large;
+    font-family: monospace;
+    color: gray;
+}
+
+.item-manufacturer {
+    color: darkgrey;
+}
+
+.input {
+    padding: .5em;
+    display: flex;
+    align-items: center;
+    margin: 0.5em;
+    flex: 1 1 0;
+}
+
+input, label {
+    margin: 0.2em;
+    border-radius: 0.25em;
+    padding: 1em;
+    text-align: center;
+    flex: 1 1 40%;
 }
