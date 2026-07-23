@@ -1,0 +1,38 @@
+.message-container {
+    height: 100%;
+    width: 100%;
+    padding: 5em;
+}
+
+.text-container {
+    background-color: purple;
+    border-radius: 2em;
+    border: 1px solid pink;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-container {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
+}
+
+.title {
+    flex: 1 1 50%;
+    font-size: xx-large;
+}
+
+.message {
+    flex: 1 1 50%;
+    text-align: center;
+    font-size: x-large;
+}
+
+.close-btn {
+    min-width: 50%;
+}
