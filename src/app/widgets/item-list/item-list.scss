@@ -1,0 +1,6 @@
+$input-padding: .5em;
+
+input, label {
+    flex: 1 1 25%;
+    padding: $input-padding;
+}

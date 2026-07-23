@@ -1,0 +1,18 @@
+<section class="layout">
+    <section class="title">
+        <h2>{{title()}}</h2>
+    </section>
+    @for (item of items(); track item) 
+    {
+        <section class="container shrink">
+            <label for="{{item.name}}">{{item.name}}</label>
+            <input #list_item class="lowercase" id="{{item.name}}" type="checkbox" (click)="onItemChecked(item.name, list_item.checked)">
+        </section>
+    }
+    @empty
+    { 
+        <section>
+            <label>No Capabilities Available</label>
+        </section>
+    }
+</section>
