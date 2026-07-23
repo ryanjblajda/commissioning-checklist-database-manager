@@ -1,0 +1,28 @@
+<!--<select ngCombobox>
+    @for (option of options(); track option) {
+        <option>{{option.name}}</option>
+    }
+</select>-->
+
+<div ngCombobox #combobox="ngCombobox" [(expanded)]="popupExpanded" [preserveContent]="true" class="select">
+  <span class="combobox-label">
+    <span class="selected-label-text">{{selectedOption()}}</span>
+  </span>
+  <span class="example-arrow material-symbols-outlined" translate="no" aria-hidden="true">arrow_drop_down</span>
+</div>
+<ng-template [cdkConnectedOverlay]="{origin: combobox.element, usePopover: 'inline', matchWidth: true}" [cdkConnectedOverlayOpen]="popupExpanded()">
+  <ng-template ngComboboxPopup [combobox]="combobox">
+    <div class="example-popup-container">
+      <div #listbox="ngListbox" ngListbox ngComboboxWidget [tabindex]="-1" focusMode="activedescendant" selectionMode="explicit" [(value)]="selectedOptions" [activeDescendant]="listbox.activeDescendant()" (click)="onCommit()">
+        @for (option of options(); track option)
+        {
+          <div ngOption [value]="option.name" [label]="option.description">
+            @if (option.description === "" || option.description === null || option.description === undefined) { <span class="example-option-text">{{ option.name }}</span> }
+            @else { <span class="example-option-text">{{ option.name }} : {{ option.description }}</span> }
+            <span class="example-option-check material-symbols-outlined" translate="no" aria-hidden="true">check</span>
+          </div>
+        }
+      </div>
+    </div>
+  </ng-template>
+</ng-template>
