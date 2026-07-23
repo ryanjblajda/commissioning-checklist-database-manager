@@ -4,7 +4,7 @@ import { Navigation } from '../widgets/navigation/navigation';
 
 @Component({
   selector: 'app-home-page',
-  imports: [Navigation, RouterLink],
+  imports: [RouterLink],
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss',
 })
