@@ -1,20 +1,10 @@
-import { Member } from "../member/member.model";
-
-export class Task extends Member {
-    description:string;
-
-    constructor(id: number, name:string, description:string) {
-        super(id, name);
-
-        this.description = description;
-    }
-}
+import { DescriptiveMember, Member } from "../member/member.model";
 
 export class TaskPayload {
     type: string;
-    payload: Task[];
+    payload: DescriptiveMember[];
  
-    constructor(type: string, payload:Task[]) {
+    constructor(type: string, payload:DescriptiveMember[]) {
         this.payload = payload;
         this.type = type;
     }
