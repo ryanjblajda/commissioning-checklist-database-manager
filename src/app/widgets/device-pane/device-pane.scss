@@ -1,7 +1,15 @@
 $input-text-background-color: rgba(0, 0, 0, 0.5);
 $input-text-font-color: white;
 $input-text-border-radius: .5em;
-$input-padding: .25em;
+$input-padding: .5em;
+
+app-combobox {
+    flex: 1 1 25%;
+}
+
+app-item-list { 
+    flex: 1 1 50%;
+}
 
 .suggestion-form {
     display: flex;
@@ -11,7 +19,7 @@ $input-padding: .25em;
 }
 
 input, label {
-    flex: 1 1 0;
+    flex: 1 1 25%;
     padding: $input-padding;
 }
 

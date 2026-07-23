@@ -6,60 +6,25 @@
         <section class="layout shrink">
             <section class="container">
                 <label for="prefix">Device Prefix:</label>
-                <input class="uppercase" id="prefix" type="text" required placeholder="EXP"/>
+                <app-combobox [name]="prefix" [options]="prefixes()" (selected)="selectPrefix($event)"></app-combobox>
             </section>
 
             <section class="container">
                 <label for="mfr">Device Manufacturer Name:</label>
-                <input class="uppercase" id="mfr" type="text" placeholder="Shure"/>
+                <app-combobox [name]="manufacturer" [options]="manufacturers()" (selected)="selectManufacturer($event)"></app-combobox>
             </section>
 
             <section class="container">
                 <label for="model">Device Model Name:</label>
-                <input class="uppercase" id="model" type="text" placeholder="MXA910"/>
+                <input #input class="uppercase" id="model" type="text" placeholder="MXA910" [value]="modelSelected()" (input)="selectModel(input.value)"/>
             </section>
         </section>
 
         <section class="members">
-            <section class="layout">
-                <section class="title">
-                    <h2>Device Capability</h2>
-                </section>
-                @for (capability of capabilities(); track capability) 
-                {
-                    <section class="container shrink">
-                        <label for="{{capability.name}}">{{capability.name}}</label>
-                        <input class="lowercase" id="{{capability.name}}" type="checkbox"/>
-                    </section>
-                }
-                @empty
-                { 
-                    <section>
-                        <label>No Capabilities Available</label>
-                    </section>
-                }
-            </section>
-            
-            <section class="layout">
-                <section class="title">
-                    <h2>Device Control Type</h2>
-                </section>
-                @for (type of controls(); track type) 
-                {
-                    <section class="container shrink">
-                        <label for="{{type.name}}">{{type.name}}</label>
-                        <input class="lowercase" id="{{type.name}}" type="checkbox"/>
-                    </section>
-                }
-                @empty
-                { 
-                    <section>
-                        <label>No Control Types Available</label>
-                    </section>
-                }
-            </section>
+            <app-item-list [items]="capabilities()" [title]="capabilityListTitle"></app-item-list>
+            <app-item-list [items]="controls()" [title]="controlListTitle"></app-item-list>
         </section>
         <section class="submit">
-            <button type="submit">{{submitButtonText()}}</button>
+            <button [class.disabled]="submitButtonDisabled()" [disabled]="submitButtonDisabled()" type="submit">{{submitButtonText()}}</button>
         </section>
     </form>
