@@ -20,6 +20,14 @@ app-navigation {
     padding: 1em;
 }
 
+.disabled {
+    opacity: 0.5;
+}
+
+.disabled:hover { 
+    scale: 1.0;
+}
+
 .uppercase { 
     text-transform: uppercase;
 }
