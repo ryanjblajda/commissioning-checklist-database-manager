@@ -2,13 +2,11 @@ import { Component, signal, inject} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Navigation } from '../widgets/navigation/navigation';
 import { Member } from '../models/member/member.model';
-import { ControlType } from '../models/control-type/control-type.model';
 import { ApiService } from '../services/api/api.service';
-import { DevicePane } from "../widgets/device-pane/device-pane";
 
 @Component({
   selector: 'app-suggestion-page',
-  imports: [Navigation, CommonModule, DevicePane],
+  imports: [Navigation, CommonModule],
   templateUrl: './suggestion-page.html',
   styleUrl: './suggestion-page.scss',
 })
