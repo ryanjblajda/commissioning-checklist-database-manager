@@ -1,17 +1,9 @@
-// data.service.ts
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MemberPayload } from '../../models/member/member.model';
+import { DescriptiveMember, DescriptiveMemberPayload, MemberPayload } from '../../models/member/member.model';
 import { Observable } from 'rxjs';
-import { DevicePayload, DeviceTypePayload } from '../../models/device/device.model';
-import { Task, TaskPayload } from '../../models/task/task.model';
-
-// Define an interface for type safety
-export interface Post {
-  id: number;
-  title: string;
-  body: string;
-}
+import { DevicePayload, DeviceTypePayload, NewDevicePayload } from '../../models/device/device.model';
+import { TaskPayload } from '../../models/task/task.model';
 
 @Injectable({
   providedIn: 'root'
@@ -50,11 +42,72 @@ export class ApiService {
     return this.http.get<MemberPayload>(`${this.apiUrl}get/models/${model}`)
   }
 
-  getManufacturers(): Observable<MemberPayload> {
-    return this.http.get<MemberPayload>(`${this.apiUrl}get/manufacturers`)
+  getManufacturers(): Observable<DescriptiveMemberPayload> {
+    return this.http.get<DescriptiveMemberPayload>(`${this.apiUrl}get/manufacturers`)
   }
 
   getManufacturer(manufacturer: string): Observable<MemberPayload> {
     return this.http.get<MemberPayload>(`${this.apiUrl}get/manufacturers/${manufacturer}`)
+  }
+
+  createNewDevice(payload:NewDevicePayload, callback:CallableFunction) {
+    let result = false;
+
+    this.http.post<any>(`${this.apiUrl}set/device`, payload).subscribe((payload) => {
+      result = payload.success;
+    });
+  }
+
+  createNewModel(payload:string, callback:CallableFunction) {
+    let result = false;
+
+    this.http.post<any>(`${this.apiUrl}set/model`, payload).subscribe((payload) => {
+      result = payload.success;
+    });
+  }
+
+  createNewPrefix(payload:DescriptiveMember, callback:CallableFunction) {
+    let result = false;
+
+    this.http.post<any>(`${this.apiUrl}set/prefix`, payload).subscribe((response) => {
+      console.log(response)
+      callback(response.success, response.reason);
+    });
+  }
+
+  createNewManufacturer(payload:DescriptiveMember, callback:CallableFunction) {
+    let result = false;
+
+    this.http.post<any>(`${this.apiUrl}set/manufacturer`, payload).subscribe((payload) => {
+      result = payload.success;
+      callback(result);
+    });
+  }
+
+  createNewControlMethod(payload:DescriptiveMember, callback:CallableFunction) {
+    let result = false;
+
+    this.http.post<any>(`${this.apiUrl}set/control`, payload).subscribe((payload) => {
+      result = payload.success;
+      callback(result);
+    });
+  }
+
+  createNewCapability(payload:DescriptiveMember, callback:CallableFunction) {
+    let result = false;
+
+    this.http.post<any>(`${this.apiUrl}set/capability`, payload).subscribe((payload) => {
+      result = payload.success;
+      callback(result);
+    });
+  }
+
+  createNewTask(payload:DescriptiveMember, callback:CallableFunction)  {
+    let result = false;
+
+    this.http.post<any>(`${this.apiUrl}set/task`, payload).subscribe((payload) => {
+      result = payload.success;
+      callback(result);
+    });
   }
 }
