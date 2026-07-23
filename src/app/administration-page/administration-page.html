@@ -1,4 +1,5 @@
 <section class="main">
+    @if(showMessage()) { <app-result-message [title]="messageTitle()" [message]="messageBody()" (close)="onCloseMessage()"></app-result-message> }
     <app-navigation></app-navigation>
     <section class="administration">
         <section class="nav-admin">
@@ -14,23 +15,37 @@
         <section class="administration-selected-pane">
             @if (supportsAddEntry(selectedTab())) {
                 <section class="quick-add border items">
-                    <section class="input">
+                    <section class="input quick-add-item">
                         <label for="name">Name</label>
-                        <input name="name" type="text" [ngClass]="getNameTextTransform(selectedTab())">
+                        <input name="name" #name type="text" [ngClass]="getNameTextTransform(selectedTab())" (change)="nameChanged(name.value)" [value]="nameText()">
                     </section>
+
                     @if (supportsDescription(selectedTab())) {
-                        <section class="input">
-                            <label for="name">Description</label>
-                            <input name="name" type="text" [ngClass]="getDescriptionTextTransform(selectedTab())"/> 
+                        <section class="input quick-add-item">
+                            <label for="description">Description</label>
+                            <input name="description" #description type="text" [ngClass]="getDescriptionTextTransform(selectedTab())" (change)="descriptionChanged(description.value)" [value]="descriptionText()"/> 
                         </section>
                     }
 
-                    @if (selectedTab() === tabModels) { }
-                    <button>Add {{selectedTab()}}</button>
+                    @if (selectedTab() === tabModels) { 
+                        <app-combobox [name]="tabManufacturers" [options]="manufacturers()" (selected)="manufacturerChanged($event)"></app-combobox>
+                    }
+
+                    @if (selectedTab() === tabTasks) {
+                        <section class="textarea">
+                            <label for="description">Description</label>
+                            <textarea name="description" #descriptiontextarea (change)="descriptionChanged(descriptiontextarea.value)"></textarea>
+                        </section>
+                    
+                        <app-item-list class="task-capability" [title]="tabCapabilities" [items]="capabilities()"></app-item-list>
+                        <app-item-list class="task-control" [title]="tabControlTypes" [items]="controls()"></app-item-list>
+                    }
+
+                    <button class="quick-add-item" (click)="addSelected(selectedTab())" [class.disabled]="addButtonDisabled()">Add {{selectedTab()}}</button>
                 </section>
             }
             @if (selectedTab() === tabDashboard) {
-                <section class="content dashboard">
+                <section class="dashboard">
                     <section class="stats">
                         <article class="stat-item border">
                             <section class="detail">
@@ -91,7 +106,7 @@
                         <section class="title">
                             <h1>Add New Device</h1>
                         </section>
-                        <app-device-pane [capabilities]="capabilities()" [controls]="controls()" [submitButtonText]="btnText"></app-device-pane>
+                        <app-device-pane [capabilities]="capabilities()" [controls]="controls()" [submitButtonText]="btnText" [manufacturers]="manufacturers()" [prefixes]="types()" (device)="onDeviceSubmitted($event)"></app-device-pane>
                     </section>
                 </section>
             }
